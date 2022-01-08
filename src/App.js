@@ -2,12 +2,16 @@ import { useState } from 'react';
 import Content from './Content.js';
 
 function App() {
-  const [toggle, setToggle] = useState(false)
+  const [count, setCount] = useState(0)
 
+  const handleIncrease = () => {
+    setCount(count + 1)
+  }
   return (
     <div className="App" style={{ padding: 20 }}>
-      <button onClick={() => setToggle(!toggle)}>Toggle</button>
-      {toggle && <Content />}
+      <Content count={count} />
+      <h1> {count} </h1>
+      <button onClick={handleIncrease}>Click me</button>
     </div >
   );
 }
