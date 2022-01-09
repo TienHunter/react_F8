@@ -1,54 +1,48 @@
-import { useState, useMemo, useRef } from 'react';
-// import Content from './Content.js';
+
+import { useReducer } from 'react'
+
+
+// init state
+const initState = 0
+
+// Action
+const UP_COUNT = 'up'
+const DOWN_COUNT = 'down'
+
+// reducer
+const reducer = (state, action) => {
+  console.log('reducer running ...');
+  switch (action) {
+    case UP_COUNT:
+      return state + 1;
+
+    case DOWN_COUNT:
+      return state - 1;
+
+    default:
+      throw new Error('Invald action');
+  }
+}
 
 function App() {
 
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState('')
-  const [products, setProducts] = useState([])
-  const inputName = useRef();
-
-  const hanldeSubmit = () => {
-    setProducts([...products, {
-      name: name,
-      price: +price
-    }])
-    setName('')
-    setPrice('')
-    inputName.current.focus()
-  }
-
-  const total = useMemo(() => {
-    products.reduce((total, product) => {
-      console.log('tinh toan lai ...');
-      return total + product.price;
-    }, 0)
-  }, [products])
+  const [count, dispatch] = useReducer(reducer, initState)
 
   return (
-    <div>
-      <input
-        ref={inputName}
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder='Enter your name ...'
-      />
-      <br />
-      <input
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-        placeholder='Enter your price ...'
-      />
-      <br />
-      <button onClick={hanldeSubmit}>Add</button>
-      <br />Total: {total}<br />
-      <ul>
-        {products.map((product, index) =>
-          <li key={index} > {product.name} - {product.price} </li>
-        )}
-      </ul>
+    <div style={{ padding: '20px' }}>
+      <h1> {count} </h1>
+      <button
+        onClick={() => dispatch(DOWN_COUNT)}
+      >
+        Down
+      </button>
+      <button
+        onClick={() => dispatch(UP_COUNT)}
+      >
+        Up
+      </button>
+
     </div>
   )
 }
-
 export default App;
