@@ -36,7 +36,72 @@
     transform: rotate(360deg);
   }
 }
-.dark {
-  color: #fff;
-  background-color: #333;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #61dafb;
+}
+.wrapper {
+  min-width: 320px;
+  min-height: 240px;
+  max-height: 400px;
+  background-color: #2685c5;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+.input {
+  font-size: 16px;
+  margin-right: 12px;
+  padding: 8px 20px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+}
+.btn-confirm {
+  background-color: #282c34;
+  color: #eee;
+}
+.todos {
+  list-style: none;
+  margin: 8px 0;
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 8px 20px;
+}
+.todo {
+  display: flex;
+  margin: 8px 0;
+}
+.todo div {
+  text-align: left;
+  flex: 1;
+}
+.btn {
+  border: none;
+  outline: none;
+  margin: 0 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.btn:hover {
+  opacity: 1;
+}
+.btn-remove {
+  background-color: red;
+  color: #ccc;
+}
+.btn-edit {
+  background-color: rgb(70, 56, 201);
+  color: #ccc;
 }
