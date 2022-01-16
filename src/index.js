@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -7,9 +9,9 @@ import { StoreProvider } from './store'
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreProvider>
+    <Router>
       <App />
-    </StoreProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
